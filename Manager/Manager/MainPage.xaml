@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Manager"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{StaticResource DarkPageBackgroundColor}"
+             x:Class="Manager.MainPage">
+ <StackLayout>
+     <Label
+         Margin="20, 30, 20, 0"
+         Text="Authorization"
+         FontSize="20"
+         HorizontalOptions="Center"
+         Style="{StaticResource Body1_MulishSemiBold}"></Label>
+     <StackLayout
+            Margin="20, 30, 20, 20"
+            Spacing="5">
+            <Label
+                Text="Login"
+                Style="{StaticResource Body1_MulishSemiBold}"></Label>
+            <Frame
+                x:Name="EmailFrame"
+                Style="{StaticResource Base_FrameEntry}">
+                <Entry
+                    Placeholder="Enter your login"
+                    Text="{Binding Login}"
+                    Style="{StaticResource Base_Entry}">
+                </Entry>
+            </Frame>
+        </StackLayout>
+        <StackLayout
+            Margin="20, 0"
+            Spacing="5">
+            <Label
+                Text="Password"
+                Style="{StaticResource Body1_MulishSemiBold}"></Label>
+            <Frame
+                x:Name="PasswordFrame"
+                Style="{StaticResource Base_FrameEntry}">
+                <Entry
+                    IsPassword="True"
+                    Placeholder="Enter your password"
+                    ReturnCommand="{Binding LoginCommand}"
+                    Text="{Binding Password}"
+                    Style="{StaticResource Base_Entry}">
+                </Entry>
+            </Frame>
+        </StackLayout>
+        <Button
+            x:Name="LoginButton"
+            IsEnabled="False"
+            Command="{Binding LoginCommand}"
+            Margin="20, 20, 20, 10"
+            Text="Login"
+            Style="{StaticResource Base_Button}"></Button>
+    </StackLayout>
+</ContentPage>

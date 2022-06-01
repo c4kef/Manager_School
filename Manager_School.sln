@@ -1,6 +1,10 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manager_School", "Manager_School\Manager_School.csproj", "{D522D97E-AE47-444E-8189-A7969EF4CC2C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manager", "Manager\Manager\Manager.csproj", "{E797A22D-3EAA-4351-A1DC-8A019BA679AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manager.Droid", "Manager\Manager.Droid\Manager.Droid.csproj", "{ECDEE94E-C224-4D77-9346-6FC8CCE3D811}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manager.iOS", "Manager\Manager.iOS\Manager.iOS.csproj", "{EA131B74-86BA-4421-877B-BC14E22D2AC1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -8,11 +12,17 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D522D97E-AE47-444E-8189-A7969EF4CC2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D522D97E-AE47-444E-8189-A7969EF4CC2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D522D97E-AE47-444E-8189-A7969EF4CC2C}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{D522D97E-AE47-444E-8189-A7969EF4CC2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D522D97E-AE47-444E-8189-A7969EF4CC2C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D522D97E-AE47-444E-8189-A7969EF4CC2C}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{E797A22D-3EAA-4351-A1DC-8A019BA679AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E797A22D-3EAA-4351-A1DC-8A019BA679AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E797A22D-3EAA-4351-A1DC-8A019BA679AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E797A22D-3EAA-4351-A1DC-8A019BA679AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECDEE94E-C224-4D77-9346-6FC8CCE3D811}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECDEE94E-C224-4D77-9346-6FC8CCE3D811}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECDEE94E-C224-4D77-9346-6FC8CCE3D811}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECDEE94E-C224-4D77-9346-6FC8CCE3D811}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA131B74-86BA-4421-877B-BC14E22D2AC1}.Debug|Any CPU.ActiveCfg = Debug|iPhoneSimulator
+		{EA131B74-86BA-4421-877B-BC14E22D2AC1}.Debug|Any CPU.Build.0 = Debug|iPhoneSimulator
+		{EA131B74-86BA-4421-877B-BC14E22D2AC1}.Release|Any CPU.ActiveCfg = Release|iPhoneSimulator
+		{EA131B74-86BA-4421-877B-BC14E22D2AC1}.Release|Any CPU.Build.0 = Release|iPhoneSimulator
 	EndGlobalSection
 EndGlobal
