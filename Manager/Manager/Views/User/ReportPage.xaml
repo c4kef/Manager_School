@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BackgroundColor="{StaticResource DarkPageBackgroundColor}"
+             x:Class="Manager.Views.User.ReportPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label
+                Margin="20, 30, 20, 0"
+                Text="{Binding DeviceInfo.Type, StringFormat='Жалоба на {0}'}"
+                FontSize="20"
+                HorizontalOptions="Center"
+                Style="{StaticResource Body1_MulishSemiBold}"></Label>
+            <Grid
+                RowDefinitions="auto, auto">
+                <Frame
+                    Grid.Row="0"
+                    Margin="20, 30, 20, 0"
+                    Style="{StaticResource Base_FrameEntry}">
+                    <Editor
+                        Placeholder="Введите краткое описание проблемы"
+                        HeightRequest="300"
+                        Style="{StaticResource Base_Entry}"/>
+                </Frame>
+                <Button
+                    Grid.Row="1"
+                    Command="{Binding SendReport}"
+                    Margin="20, 40, 20, 10"
+                    HorizontalOptions="Center"
+                    WidthRequest="200"
+                    Text="Отправить"
+                    Style="{StaticResource Base_Button}"/>
+                
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

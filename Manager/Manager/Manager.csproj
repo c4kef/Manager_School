@@ -13,4 +13,15 @@
         <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
         <PackageReference Include="Xamarin.Forms.PancakeView" Version="2.3.0.759" />
     </ItemGroup>
+	
+    <ItemGroup>
+      <Compile Update="Views\User\ReportPage.xaml.cs">
+        <DependentUpon>ReportPage.xaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\User\DetailTask.xaml.cs">
+        <DependentUpon>DetailTask.xaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+    </ItemGroup>
 </Project>

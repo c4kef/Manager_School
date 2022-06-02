@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BackgroundColor="{StaticResource DarkPageBackgroundColor}"
+             x:Class="Manager.Views.User.DetailDevice">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label
+                Margin="20, 30, 20, 0"
+                Text="{Binding DeviceInfo.Type}"
+                FontSize="20"
+                HorizontalOptions="Center"
+                Style="{StaticResource Body1_MulishSemiBold}"></Label>
+            <Grid
+                RowDefinitions="auto, auto, auto, auto, auto, auto">
+                <Label
+                    Grid.Row="0"
+                    Margin="20, 30, 20, 0"
+                    Text="{Binding DeviceInfo.Cabinet, StringFormat='Кабинет: {0}'}"
+                    FontSize="15"
+                    Style="{StaticResource Body1_MulishSemiBold}"></Label>
+                <Label
+                    Grid.Row="1"
+                    Margin="20, 0, 20, 0"
+                    Text="{Binding DeviceInfo.Manufacturer, StringFormat='Производитель: {0}'}"
+                    FontSize="15"
+                    Style="{StaticResource Body1_MulishSemiBold}"></Label>
+                <Label
+                    Grid.Row="2"
+                    Margin="20, 0, 20, 0"
+                    Text="{Binding DeviceInfo.Model, StringFormat='Модель: {0}'}"
+                    FontSize="15"
+                    Style="{StaticResource Body1_MulishSemiBold}"></Label>
+                <Label
+                    Grid.Row="3"
+                    Margin="20, 0, 20, 0"
+                    Text="{Binding DeviceInfo.AttachDate, StringFormat='От: {0}'}"
+                    FontSize="15"
+                    Style="{StaticResource Body1_MulishSemiBold}"></Label>
+                <Label
+                    Grid.Row="4"
+                    Margin="20, 0, 20, 0"
+                    Text="{Binding DeviceInfo.Status, StringFormat='Статус: {0}'}"
+                    FontSize="15"
+                    Style="{StaticResource Body1_MulishSemiBold}"></Label>
+                <Button
+                    Grid.Row="5"
+                    Command="{Binding NavigateToReportPageCommand}"
+                    Margin="20, 40, 20, 10"
+                    HorizontalOptions="Center"
+                    WidthRequest="200"
+                    Text="Пожаловаться"
+                    Style="{StaticResource Base_Button}"/>
+                
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

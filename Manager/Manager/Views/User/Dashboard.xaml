@@ -9,7 +9,7 @@
     <ContentPage.Content>
         <Grid
             BackgroundColor="{StaticResource DarkPageBackgroundColor}"
-            RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, *">
+            RowDefinitions="Auto, Auto, Auto, Auto, Auto, 130, Auto, 130, *">
             <Grid
                 Grid.Row="1"
                 ColumnDefinitions="Auto, *, Auto"
@@ -20,25 +20,15 @@
                     Grid.Column="1"
                     Grid.Row="0"
                     Style="{StaticResource Body1_MulishBold}"
-                    Text="Hello"
+                    Text="Привет"
                     TextColor="{StaticResource DarkSecondaryTextColor}" />
                 <Label
                     Grid.Column="1"
                     Grid.Row="1"
                     Margin="0, -2, 0, 0"
                     Style="{StaticResource Subtitle1_MulishBlack}"
-                    Text="C4ke"
+                    Text="Артемий Макаринов"
                     TextColor="{StaticResource DarkPrimaryTextColor}" />
-                <Button
-                    Grid.Row="1"
-                    Grid.Column="2"
-                    CornerRadius="15"
-                    WidthRequest="45"
-                    Margin="0, -20, 0, 0"
-                    Text="🔔"
-                    BackgroundColor="White"
-                    TextColor="{StaticResource DarkButtonTextColor}"
-                    FontSize="{StaticResource Body2FontSize}"/>
             </Grid>
             <Grid
                 x:Name="daysList"
@@ -156,50 +146,68 @@
                     Text="Активные запросы"
                     TextColor="{StaticResource DarkPrimaryTextColor}" />
             </StackLayout>
-            <StackLayout
+            <CollectionView
+                Grid.Row="5"
+                Margin="5, 0"
+                HorizontalScrollBarVisibility="Never"
+                ItemsSource="{Binding Tasks}"
+                SelectionMode="None">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout ItemSpacing="10" Orientation="Horizontal" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <pancake:PancakeView
+                            Margin="0,8"
+                            Padding="10"
+                            WidthRequest="220"
+                            BackgroundColor="#FFFFFF"
+                            CornerRadius="18">
+                            <Grid
+                                RowDefinitions="auto, auto, 30"
+                                ColumnDefinitions="auto,auto"
+                                RowSpacing="0">
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Grid.ColumnSpan="2"
+                                    FontFamily="FontPoppinsMedium"
+                                    FontSize="22"
+                                    LineBreakMode="TailTruncation"
+                                    Text="{Binding Title}"
+                                    VerticalOptions="Center" />
+                                <Label
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                    Grid.ColumnSpan="2"
+                                    FontFamily="FontPoppinsMedium"
+                                    FontSize="16"
+                                    Margin="0,10,0,0"
+                                    LineBreakMode="TailTruncation"
+                                    Text="{Binding Description}" />
+                                <Label
+                                    Grid.Row="5"
+                                    Grid.Column="1"
+                                    Grid.ColumnSpan="2"
+                                    FontFamily="FontPoppinsMedium"
+                                    FontSize="12"
+                                    Text="{Binding TimeFrom, StringFormat='От {0}'}" />
+                            </Grid>
+                            <pancake:PancakeView.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    Command="{Binding Path=BindingContext.NavigateToDetailTaskPageCommand , Source={x:Reference DevicesList}}"
+                                    CommandParameter="{Binding .}"
+                                    NumberOfTapsRequired="1" />
+                            </pancake:PancakeView.GestureRecognizers>
+                        </pancake:PancakeView>
+                    </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            <!--<StackLayout
                 Grid.Row="5"
                 Padding="5, 0">
-                <pancake:PancakeView
-                    Margin="0,8"
-                    Padding="10"
-                    BackgroundColor="#FFFFFF"
-                    CornerRadius="18"
-                    HeightRequest="120">
-                    <Grid
-                        RowDefinitions="auto, auto"
-                        ColumnDefinitions="auto,auto"
-                        RowSpacing="0">
-                        <Label
-                            Grid.Row="1"
-                            Grid.Column="1"
-                            Grid.ColumnSpan="2"
-                            FontFamily="FontPoppinsMedium"
-                            FontSize="22"
-                            LineBreakMode="TailTruncation"
-                            Text="Test"
-                            VerticalOptions="Center" />
-                        <Label
-                            Grid.Row="2"
-                            Grid.Column="1"
-                            Grid.ColumnSpan="2"
-                            FontFamily="FontPoppinsMedium"
-                            FontSize="16"
-                            LineBreakMode="TailTruncation"
-                            Text="Описание карточки" />
-                        <Label
-                            Grid.Row="5"
-                            Grid.Column="1"
-                            Grid.ColumnSpan="2"
-                            FontFamily="FontPoppinsMedium"
-                            FontSize="12"
-                            Text="От 01.06.2022" />
-                    </Grid>
-                    <pancake:PancakeView.GestureRecognizers>
-                        <TapGestureRecognizer
-                            NumberOfTapsRequired="1" />
-                    </pancake:PancakeView.GestureRecognizers>
-                </pancake:PancakeView>
-            </StackLayout>
+                
+            </StackLayout>-->
             
               <StackLayout
                 Grid.Row="6"
@@ -211,70 +219,64 @@
                     Text="Закрепленные устройства"
                     TextColor="{StaticResource DarkPrimaryTextColor}" />
             </StackLayout>
-            <StackLayout
+            <CollectionView
                 Grid.Row="7"
-                Padding="5, 0">
-                <pancake:PancakeView
-                    Margin="0,8"
-                    Padding="10"
-                    BackgroundColor="#FFFFFF"
-                    CornerRadius="18"
-                    HeightRequest="120">
-                    <Grid
-                        RowDefinitions="auto, auto"
-                        ColumnDefinitions="auto,auto"
-                        RowSpacing="0">
-                        <Label
-                            Grid.Row="1"
-                            Grid.Column="1"
-                            Grid.ColumnSpan="2"
-                            FontFamily="FontPoppinsMedium"
-                            FontSize="22"
-                            LineBreakMode="TailTruncation"
-                            Text="Test"
-                            VerticalOptions="Center" />
-                        <Label
-                            Grid.Row="2"
-                            Grid.Column="1"
-                            Grid.ColumnSpan="2"
-                            FontFamily="FontPoppinsMedium"
-                            FontSize="16"
-                            LineBreakMode="TailTruncation"
-                            Text="Описание карточки" />
-                        <Label
-                            Grid.Row="5"
-                            Grid.Column="1"
-                            Grid.ColumnSpan="2"
-                            FontFamily="FontPoppinsMedium"
-                            FontSize="12"
-                            Text="От 01.06.2022" />
-                    </Grid>
-                    <pancake:PancakeView.GestureRecognizers>
-                        <TapGestureRecognizer
-                            NumberOfTapsRequired="1" />
-                    </pancake:PancakeView.GestureRecognizers>
-                </pancake:PancakeView>
-            </StackLayout>
-            <Frame
-                Grid.Row="8"
-                BackgroundColor="{StaticResource DarkButtonColor}"
-                VerticalOptions="End"
-                HorizontalOptions="End"
-                CornerRadius="20"
-                TranslationY="-20"
-                TranslationX="-20"
-                Padding="20">
-                <Frame.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding AddCommand}" />
-                </Frame.GestureRecognizers>
-                <Label
-                    Text="➕"
-                    FontSize="{StaticResource Headline3FontSize}"
-                    FontFamily="FontAwesome_Solid"
-                    TextColor="{StaticResource DarkButtonTextColor}"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center" />
-            </Frame>
+                x:Name="DevicesList"
+                Margin="5, 0"
+                HorizontalScrollBarVisibility="Never"
+                ItemsSource="{Binding Devices}"
+                SelectionMode="None">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout ItemSpacing="10" Orientation="Horizontal" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <pancake:PancakeView
+                            Margin="0,8"
+                            Padding="10"
+                            WidthRequest="220"
+                            BackgroundColor="#FFFFFF"
+                            CornerRadius="18">
+                            <Grid
+                                RowDefinitions="auto, auto, 30"
+                                ColumnDefinitions="auto,auto"
+                                RowSpacing="0">
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Grid.ColumnSpan="2"
+                                    FontFamily="FontPoppinsMedium"
+                                    FontSize="22"
+                                    LineBreakMode="TailTruncation"
+                                    Text="{Binding Type}"
+                                    VerticalOptions="Center" />
+                                <Label
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                    Grid.ColumnSpan="2"
+                                    FontFamily="FontPoppinsMedium"
+                                    FontSize="16"
+                                    Margin="0,10,0,0"
+                                    LineBreakMode="TailTruncation"
+                                    Text="{Binding Status}" />
+                                <Label
+                                    Grid.Row="5"
+                                    Grid.Column="1"
+                                    Grid.ColumnSpan="2"
+                                    FontFamily="FontPoppinsMedium"
+                                    FontSize="12"
+                                    Text="{Binding AttachDate, StringFormat='От {0}'}" />
+                            </Grid>
+                            <pancake:PancakeView.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    Command="{Binding Path=BindingContext.NavigateToDetailDevicePageCommand , Source={x:Reference DevicesList}}"
+                                    CommandParameter="{Binding .}"
+                                    NumberOfTapsRequired="1" />
+                            </pancake:PancakeView.GestureRecognizers>
+                        </pancake:PancakeView>
+                    </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

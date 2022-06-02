@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BackgroundColor="{StaticResource DarkPageBackgroundColor}"
+             x:Class="Manager.Views.User.DetailTask">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label
+                Margin="20, 30, 20, 0"
+                Text="{Binding Task.Title}"
+                FontSize="20"
+                HorizontalOptions="Center"
+                Style="{StaticResource Body1_MulishSemiBold}"></Label>
+            <Grid
+                RowDefinitions="auto, auto, auto, auto, auto, auto">
+                <Label
+                    Grid.Row="0"
+                    Margin="20, 30, 20, 0"
+                    Text="{Binding Task.Description}"
+                    FontSize="15"
+                    Style="{StaticResource Body1_MulishSemiBold}"/>
+                <Label
+                    Grid.Row="1"
+                    Margin="20, 30, 20, 0"
+                    Text="{Binding Task.Comment, StringFormat='Комментарий: {0}'}"
+                    FontSize="15"
+                    Style="{StaticResource Body1_MulishSemiBold}"/>
+                <Label
+                    Grid.Row="2"
+                    Margin="20, 30, 20, 0"
+                    Text="Информация о заявке"
+                    FontSize="15"
+                    Style="{StaticResource Body1_MulishSemiBold}"/>
+                <Label
+                    Grid.Row="3"
+                    Margin="20, 0, 20, 0"
+                    Text="{Binding Task.Status, StringFormat='Статус: {0}'}"
+                    FontSize="15"
+                    Style="{StaticResource Body1_MulishSemiBold}"/>
+                <Label
+                    Grid.Row="4"
+                    Margin="20, 0, 20, 0"
+                    Text="{Binding Task.Device.Model, StringFormat='Модель: {0}'}"
+                    FontSize="15"
+                    Style="{StaticResource Body1_MulishSemiBold}"/>
+                <Label
+                    Grid.Row="5"
+                    Margin="20, 0, 20, 0"
+                    Text="{Binding Task.Device.Id, StringFormat='Номер оборудования: {0}'}"
+                    FontSize="15"
+                    Style="{StaticResource Body1_MulishSemiBold}"/>
+                <Label
+                    Grid.Row="6"
+                    Margin="20, 0, 20, 0"
+                    Text="{Binding Task.TimeFrom, StringFormat='Открыто: {0}'}"
+                    FontSize="15"
+                    Style="{StaticResource Body1_MulishSemiBold}"/>
+                <Label
+                    Grid.Row="7"
+                    Margin="20, 0, 20, 0"
+                    Text="{Binding Task.TimeEnd, StringFormat='Завершено: {0}'}"
+                    FontSize="15"
+                    Style="{StaticResource Body1_MulishSemiBold}"/>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

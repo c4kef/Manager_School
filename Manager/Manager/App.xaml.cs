@@ -8,11 +8,13 @@ namespace Manager
 {
     public partial class App : Application
     {
+        public static NavigationPage NavigationPage;
+        
         public App()
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage( new MainPage() );
+            MainPage = NavigationPage = new NavigationPage( new MainPage() );
         }
 
         protected override void OnStart()
