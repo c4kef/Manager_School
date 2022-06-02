@@ -2,33 +2,32 @@
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Windows.Input;
-using Manager.Views.User;
 using Xamarin.Forms;
 
 namespace Manager.ViewModels
 {
     public class MainPageView : ViewModelBase
     {
-        public string login;
+        private string _login;
 
         public string Login
         {
-            get => login;
+            get => _login;
             set
             {
-                login = value;
+                _login = value;
                 OnPropertyChanged("Login");
             }
         }
 
-        public string password;
+        private string _password;
 
         public string Password
         {
-            get => password;
+            get => _password;
             set
             {
-                password = value;
+                _password = value;
                 OnPropertyChanged("Password");
             }
         }
@@ -52,9 +51,19 @@ namespace Manager.ViewModels
 
         private async void LoginCommandHandler()
         {
-            //MainState = LayoutState.Loading;
+            Debug.WriteLine($"Login is: {Login}");
+
+            switch (Login)
+            {
+                case "root":
+                    await ((NavigationPage) Application.Current.MainPage).PushAsync(new Manager.Views.Admin.Dashboard());
+                    break;
+                case "user":
+                    await ((NavigationPage) Application.Current.MainPage).PushAsync(new Manager.Views.User.Dashboard());
+                    break;
+            }
+            
             ClearAuthData();
-            await ((NavigationPage) Application.Current.MainPage).PushAsync (new Dashboard());
         }
 
         #endregion

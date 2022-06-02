@@ -16,6 +16,7 @@ namespace Manager
     public struct Device
     {
         public int Id { get; set; }
+        public string UserName { get; set; }
         public string Type { get; set; }
         public string Manufacturer { get; set; }
         public string Model { get; set; }

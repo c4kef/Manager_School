@@ -13,7 +13,6 @@ namespace Manager
         public MainPage()
         {
             InitializeComponent();
-            this.BindingContext = new MainPageView();
         }
     }
 }

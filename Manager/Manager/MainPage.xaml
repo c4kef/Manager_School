@@ -1,14 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:Manager"
+             xmlns:local="clr-namespace:Manager.ViewModels;assembly=Manager"
              NavigationPage.HasNavigationBar="False"
              BackgroundColor="{StaticResource DarkPageBackgroundColor}"
              x:Class="Manager.MainPage">
- <StackLayout>
+    <ContentPage.BindingContext>
+        <local:MainPageView/>
+    </ContentPage.BindingContext>
+    <StackLayout>
      <Label
          Margin="20, 30, 20, 0"
-         Text="Authorization"
+         Text="Авторизация"
          FontSize="20"
          HorizontalOptions="Center"
          Style="{StaticResource Body1_MulishSemiBold}"></Label>
@@ -22,8 +25,8 @@
                 x:Name="EmailFrame"
                 Style="{StaticResource Base_FrameEntry}">
                 <Entry
-                    Placeholder="Enter your login"
-                    Text="{Binding Login}"
+                    Placeholder="Введите логин"
+                    Text="{Binding Login, Mode=TwoWay}"
                     Style="{StaticResource Base_Entry}">
                 </Entry>
             </Frame>
@@ -39,9 +42,9 @@
                 Style="{StaticResource Base_FrameEntry}">
                 <Entry
                     IsPassword="True"
-                    Placeholder="Enter your password"
+                    Placeholder="Введите пароль"
                     ReturnCommand="{Binding LoginCommand}"
-                    Text="{Binding Password}"
+                    Text="{Binding Password, Mode=TwoWay}"
                     Style="{StaticResource Base_Entry}">
                 </Entry>
             </Frame>
@@ -51,7 +54,7 @@
             IsEnabled="False"
             Command="{Binding LoginCommand}"
             Margin="20, 20, 20, 10"
-            Text="Login"
+            Text="Войти"
             Style="{StaticResource Base_Button}"></Button>
     </StackLayout>
 </ContentPage>

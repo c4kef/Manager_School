@@ -10,8 +10,10 @@
     </PropertyGroup>
 	
     <ItemGroup>
+        <PackageReference Include="Xamarin.Essentials" Version="1.7.3" />
         <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
         <PackageReference Include="Xamarin.Forms.PancakeView" Version="2.3.0.759" />
+        <PackageReference Include="ZXing.Net.Mobile.Forms" Version="2.4.1" />
     </ItemGroup>
 	
     <ItemGroup>
@@ -20,6 +22,22 @@
         <SubType>Code</SubType>
       </Compile>
       <Compile Update="Views\User\DetailTask.xaml.cs">
+        <DependentUpon>DetailTask.xaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\Admin\Dashboard.xaml.cs">
+        <DependentUpon>Dashboard.xaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\Admin\DetailDevice.xaml.cs">
+        <DependentUpon>DetailDevice.xaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\Admin\Tasks.xaml.cs">
+        <DependentUpon>Tasks.xaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\Admin\DetailTask.xaml.cs">
         <DependentUpon>DetailTask.xaml</DependentUpon>
         <SubType>Code</SubType>
       </Compile>

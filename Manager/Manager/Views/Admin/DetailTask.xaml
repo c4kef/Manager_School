@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BackgroundColor="{StaticResource DarkPageBackgroundColor}"
+             x:Class="Manager.Views.Admin.DetailTask">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+            <Label
+                Margin="20, 30, 20, 0"
+                Text="{Binding Task.Title}"
+                FontSize="20"
+                HorizontalOptions="Center"
+                Style="{StaticResource Body1_MulishSemiBold}"></Label>
+            <Grid
+                RowDefinitions="auto, auto, auto, auto, auto, auto, auto, 20">
+                <Label
+                    Grid.Row="0"
+                    Margin="20, 30, 20, 0"
+                    Text="{Binding Task.Description}"
+                    FontSize="15"
+                    Style="{StaticResource Body1_MulishSemiBold}"/>
+                <Label
+                    Grid.Row="1"
+                    Margin="20, 30, 20, 0"
+                    Text="Информация о заявке"
+                    FontSize="15"
+                    Style="{StaticResource Body1_MulishSemiBold}"/>
+                <Label
+                    Grid.Row="2"
+                    Margin="20, 0, 20, 0"
+                    Text="{Binding Task.Status, StringFormat='Статус: {0}'}"
+                    FontSize="15"
+                    Style="{StaticResource Body1_MulishSemiBold}"/>
+                <Label
+                    Grid.Row="3"
+                    Margin="20, 0, 20, 0"
+                    Text="{Binding Task.Device.Model, StringFormat='Модель: {0}'}"
+                    FontSize="15"
+                    Style="{StaticResource Body1_MulishSemiBold}"/>
+                <Label
+                    Grid.Row="4"
+                    Margin="20, 0, 20, 0"
+                    Text="{Binding Task.Device.Id, StringFormat='Номер оборудования: {0}'}"
+                    FontSize="15"
+                    Style="{StaticResource Body1_MulishSemiBold}"/>
+                <Label
+                    Grid.Row="5"
+                    Margin="20, 0, 20, 0"
+                    Text="{Binding Task.TimeFrom, StringFormat='Открыто: {0}'}"
+                    FontSize="15"
+                    Style="{StaticResource Body1_MulishSemiBold}"/>
+                <Label
+                    Grid.Row="6"
+                    Margin="20, 0, 20, 0"
+                    Text="{Binding Task.TimeEnd, StringFormat='Завершено: {0}'}"
+                    FontSize="15"
+                    Style="{StaticResource Body1_MulishSemiBold}"/>
+                <Grid
+                    Grid.Row="6"
+                    Margin="20, 65, 20, 0"
+                    RowDefinitions="auto, auto, auto">
+                    <StackLayout Orientation="Horizontal" 
+                                 Margin="20, 0, 20, 0" 
+                                 HorizontalOptions="Center"
+                                 Grid.Row="0">
+                        <RadioButton
+                            HorizontalOptions="Center"
+                            Content="Отклонить"
+                            TextColor="#FFFFFF"
+                            FontFamily="Mulish_ExtraBold"/>
+                        <RadioButton
+                            HorizontalOptions="Center"
+                            Content="Принять"
+                            TextColor="#FFFFFF"
+                            FontFamily="Mulish_ExtraBold"/>
+                    </StackLayout>
+                    <Frame
+                        Grid.Row="1"
+                        Style="{StaticResource Base_FrameEntry}">
+                        <Editor
+                            Placeholder="Введите комментарий"
+                            Text="{Binding Task.Comment}"
+                            HeightRequest="300"
+                            Style="{StaticResource Base_Entry}"/>
+                    </Frame>
+                    <Button
+                        Grid.Row="2"
+                        Command="{Binding SendReport}"
+                        Margin="20, 10, 20, 0"
+                        HorizontalOptions="Center"
+                        WidthRequest="200"
+                        Text="Отправить"
+                        Style="{StaticResource Base_Button}"/>
+                </Grid>
+            </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
