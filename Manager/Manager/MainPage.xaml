@@ -19,7 +19,7 @@
             Margin="20, 30, 20, 20"
             Spacing="5">
             <Label
-                Text="Login"
+                Text="Логин"
                 Style="{StaticResource Body1_MulishSemiBold}"></Label>
             <Frame
                 x:Name="EmailFrame"
@@ -35,7 +35,7 @@
             Margin="20, 0"
             Spacing="5">
             <Label
-                Text="Password"
+                Text="Пароль"
                 Style="{StaticResource Body1_MulishSemiBold}"></Label>
             <Frame
                 x:Name="PasswordFrame"
@@ -49,6 +49,12 @@
                 </Entry>
             </Frame>
         </StackLayout>
+        <Label
+            HorizontalOptions="Center"
+            Margin="0,10,0,0"
+            TextColor="Red"
+            Text="{Binding Status}"
+            Style="{StaticResource Body1_MulishSemiBold}"></Label>
         <Button
             x:Name="LoginButton"
             IsEnabled="False"

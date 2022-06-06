@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="1f5e4d02-2a31-43b8-a2bc-f950324bbe89" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.Manager_School/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.Manager_School/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/Manager_School.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/40aad24e-89b7-4422-a416-456cf416d7ba.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/40aad24e-89b7-4422-a416-456cf416d7ba/storage_v2/_src_/database/u1477164_diha22.xo7t1w.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/40aad24e-89b7-4422-a416-456cf416d7ba/storage_v2/_src_/database/u1477164_diha22.xo7t1w/schema/INFORMATION_SCHEMA.NBgcMw.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/40aad24e-89b7-4422-a416-456cf416d7ba/storage_v2/_src_/database/u1477164_diha22.xo7t1w/schema/sys.zb4BAA.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/40aad24e-89b7-4422-a416-456cf416d7ba/storage_v2/_src_/database/u1477164_diha22.xo7t1w/schema/u1477164_dinhem.r2nw1w.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Manager/Manager/Globals.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Manager/Manager.Droid/Manager.Droid.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Manager/Manager.Droid/Manager.Droid.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Manager/Manager/App.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Manager/Manager/App.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Manager/Manager/MainPage.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/Manager/Manager/MainPage.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Manager/Manager/Manager.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Manager/Manager/Manager.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Manager/Manager/Structs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Manager/Manager/Structs.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Manager/Manager/ViewModels/MainPageView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Manager/Manager/ViewModels/MainPageView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Manager/Manager/ViewModels/User/DashboardView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Manager/Manager/ViewModels/User/DashboardView.cs" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="2AByRxDpSRMVa5KfwDyVc187H8D" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenDatabaseViewOnStart": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/artem"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "sqlserver"
+    ]
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+</project>
