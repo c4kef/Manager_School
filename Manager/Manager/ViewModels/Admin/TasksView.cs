@@ -19,15 +19,36 @@ namespace Manager.ViewModels.Admin
             NavigateToDetailTaskPageCommand = new Command<TaskObject>(async (model) => await ExecuteNavigateToDetailTaskPageCommand(model));
         }
         
+        public List<string> StatusList => new List<string> {"Без фильтра", "На рассмотрений", "В работе", "Отклонён", "Завершён"};
+
+        public string SelectedStatus
+        {
+            set
+            {
+                var id = StatusList.FindIndex(status => status == value);
+                
+                if (id == 0)
+                    return;
+                
+                new Task(async () => await UpdateTasks(id)).Start();
+            }
+        }
+
         public Command NavigateToDetailTaskPageCommand { get; }
         
         public ObservableCollection<TaskObject> Tasks { get; set; }
         
-        private async Task UpdateTasks()
+        private async Task UpdateTasks(int idStatus = 0)
         {
-            var getTasks =
-                await (new SqlCommand(
+            SqlDataReader getTasks = null;
+
+            if (idStatus == 0)
+                getTasks = await (new SqlCommand(
                     $"SELECT Requests.id, equipmentwork.started, o.number, equipmentwork.id, equipment.id, suppliername, equipment.name, e_status.statusname, etype.typename, u.FIO, comments, datecreation, commentsadmin, request_status.name, dateclose FROM Requests JOIN Users u on Requests.id_users = u.Id JOIN Office O on u.id_office = O.id JOIN Equipmentwork equipmentwork on Requests.id_equipmentwork = equipmentwork.id JOIN Equipmentstatus e_status on equipmentwork.id_status = e_status.id JOIN Requestsstatus request_status on Requests.id_requestsstatus = request_status.id JOIN Equipment equipment on equipmentwork.id_equipment = equipment.id JOIN Equipmenttype etype on equipment.id_type = etype.id JOIN Suppliers supplier on equipment.id_supplier = supplier.id",
+                    Globals.connection)).ExecuteReaderAsync();
+            else
+                getTasks = await (new SqlCommand(
+                    $"SELECT Requests.id, equipmentwork.started, o.number, equipmentwork.id, equipment.id, suppliername, equipment.name, e_status.statusname, etype.typename, u.FIO, comments, datecreation, commentsadmin, request_status.name, dateclose FROM Requests JOIN Users u on Requests.id_users = u.Id JOIN Office O on u.id_office = O.id JOIN Equipmentwork equipmentwork on Requests.id_equipmentwork = equipmentwork.id JOIN Equipmentstatus e_status on equipmentwork.id_status = e_status.id JOIN Requestsstatus request_status on Requests.id_requestsstatus = request_status.id JOIN Equipment equipment on equipmentwork.id_equipment = equipment.id JOIN Equipmenttype etype on equipment.id_type = etype.id JOIN Suppliers supplier on equipment.id_supplier = supplier.id WHERE Requests.id_requestsstatus = {idStatus}",
                     Globals.connection)).ExecuteReaderAsync();
 
             if (!getTasks.HasRows)

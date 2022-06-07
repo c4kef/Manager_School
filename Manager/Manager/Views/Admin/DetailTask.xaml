@@ -62,7 +62,7 @@
                     Margin="20, 65, 20, 0"
                     RowDefinitions="auto, auto, auto">
                     <StackLayout Orientation="Horizontal" 
-                                 Margin="20, 0, 20, 0" 
+                                 Margin="-10, 0, 10, 0" 
                                  HorizontalOptions="Center"
                                  Grid.Row="0">
                         <RadioButton
@@ -77,6 +77,12 @@
                             TextColor="#FFFFFF"
                             FontFamily="Mulish_ExtraBold"
                             IsChecked="{Binding Accept}"/>
+                        <RadioButton
+                            HorizontalOptions="Center"
+                            Content="Завершить"
+                            TextColor="#FFFFFF"
+                            FontFamily="Mulish_ExtraBold"
+                            IsChecked="{Binding End}"/>
                     </StackLayout>
                     <Frame
                         Grid.Row="1"

@@ -5,6 +5,7 @@
              xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
              BackgroundColor="{StaticResource DarkPageBackgroundColor}"
+             Title="Dashboard"
              x:Class="Manager.Views.Admin.Dashboard">
     <ContentPage.Content>
         <Grid

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
 using Manager.Views.Admin;
@@ -22,8 +23,10 @@ namespace Manager.ViewModels.Admin
                     Decline = true;
                     break;
                 case "В работе":
-                case "Завершён":
                     Accept = true;
+                    break;
+                case "Завершён":
+                    End = true;
                     break;
             }
 
@@ -31,7 +34,7 @@ namespace Manager.ViewModels.Admin
             
             SendReport = new Command(async () => await ExecuteSendReport());
         }
-
+        
         public TaskObject Task { get; set; }
         
         public Command SendReport { get; }
@@ -64,11 +67,25 @@ namespace Manager.ViewModels.Admin
             }
         }
         
+        private bool _end;
+        public bool End
+        {
+            get
+            {
+                return _end;
+            }
+            set
+            {
+                _end = value;
+                OnPropertyChanged("End");
+            }
+        }
+        
         public string Comment { get; set; }
 
         private async Task ExecuteSendReport()
         {
-            if (string.IsNullOrEmpty(Comment) || (!Accept && !Decline))
+            if (string.IsNullOrEmpty(Comment) || (!Accept && !Decline && !End))
                 return;
 
             var taskReady = new TaskObject()
@@ -84,10 +101,20 @@ namespace Manager.ViewModels.Admin
             };
 
             await (new SqlCommand(
-                $"UPDATE Requests SET id_users = (Select Users.Id from Users WHERE Users.FIO = N'{taskReady.Device.UserName}'), id_equipmentwork = (Select Equipmentwork.id from Equipmentwork WHERE Equipmentwork.id = {Task.Device.WId}), id_requestsstatus = (Select Requestsstatus.id from Requestsstatus WHERE Requestsstatus.name = N'{((Decline) ? "Отклонён": "В работе")}'), commentsadmin = N'{taskReady.Comment}', datecreation = '{DateTime.Now}', datechange = '{DateTime.Now}' WHERE id = {taskReady.Id}",
+                $"UPDATE Requests SET id_users = (Select Users.Id from Users WHERE Users.FIO = N'{taskReady.Device.UserName}'), id_equipmentwork = (Select Equipmentwork.id from Equipmentwork WHERE Equipmentwork.id = {Task.Device.WId}), id_requestsstatus = (Select Requestsstatus.id from Requestsstatus WHERE Requestsstatus.name = N'{GetStatusText()}'), commentsadmin = N'{taskReady.Comment}', datecreation = '{DateTime.Now}', datechange = '{DateTime.Now}' WHERE id = {taskReady.Id}",
                 Globals.connection)).ExecuteNonQueryAsync();
 
             await _view.DisplayAlert("Отправлено", "Ваша заявка отправлена", "OK");
+
+            string GetStatusText()
+            {
+                if (Accept)
+                    return "В работе";
+                else if (Decline)
+                    return "Отклонён";
+                else
+                    return "Завершён";
+            }
         }
     }
 }

@@ -8,9 +8,10 @@
     <ContentPage.Content>
         <Grid
             BackgroundColor="{StaticResource DarkPageBackgroundColor}"
-            RowDefinitions="Auto">
+            RowDefinitions="Auto, Auto">
+            <Picker Title="Выберите фильтр" TextColor="White" TitleColor="White" ItemsSource="{Binding StatusList}" SelectedItem="{Binding SelectedStatus, Mode=TwoWay}" />
             <CollectionView
-                Grid.Row="0"
+                Grid.Row="1"
                 Margin="5, 10"
                 x:Name="TasksList"
                 HorizontalScrollBarVisibility="Never"
