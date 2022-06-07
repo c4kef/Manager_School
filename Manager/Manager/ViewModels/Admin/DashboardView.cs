@@ -17,7 +17,7 @@ namespace Manager.ViewModels.Admin
         public Command NavigateToDetailDevicePageCommand { get; }
         
         private async Task ExecuteNavigateToDetailDevicePageCommand()
-        {
+        {//(select ID_tournament from tournaments where name = N'{dialog.Tournaments}')
             await App.NavigationPage.PushAsync(new Tasks());
         }
     }

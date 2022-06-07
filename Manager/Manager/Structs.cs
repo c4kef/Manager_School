@@ -4,6 +4,7 @@ namespace Manager
 {
     public struct TaskObject
     {
+        public int Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public string Comment { get; set; }
@@ -15,7 +16,8 @@ namespace Manager
     
     public struct Device
     {
-        public int Id { get; set; }
+        public int WId { get; set; }
+        public int EId { get; set; }
         public string UserName { get; set; }
         public string Type { get; set; }
         public string Manufacturer { get; set; }

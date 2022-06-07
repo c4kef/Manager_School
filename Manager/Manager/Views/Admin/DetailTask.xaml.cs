@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Manager.ViewModels.Admin;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -14,21 +14,8 @@ namespace Manager.Views.Admin
     {
         public DetailTask(TaskObject task)
         {
-            Task = task;
-            
             InitializeComponent();
-            BindingContext = this;
-            
-            SendReport = new Command(async () => await ExecuteSendReport());
-        }
-
-        public TaskObject Task { get; set; }
-        
-        public Command SendReport { get; }
-        
-        private async Task ExecuteSendReport()
-        {
-            await DisplayAlert("Отправлено", "Ваша заявка отправлена", "OK");
+            BindingContext = new DetailTaskView(task, this);
         }
     }
 }

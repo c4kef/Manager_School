@@ -3,6 +3,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              BackgroundColor="{StaticResource DarkPageBackgroundColor}"
+             xmlns:local="clr-namespace:Manager.Views;assembly=Manager"
              x:Class="Manager.Views.User.ReportPage">
     <ContentPage.Content>
         <StackLayout>
@@ -21,11 +22,12 @@
                     <Editor
                         Placeholder="Введите краткое описание проблемы"
                         HeightRequest="300"
+                        Text="{Binding Comment}"
                         Style="{StaticResource Base_Entry}"/>
                 </Frame>
                 <Button
                     Grid.Row="1"
-                    Command="{Binding SendReport}"
+                    Clicked="SendReport"
                     Margin="20, 40, 20, 10"
                     HorizontalOptions="Center"
                     WidthRequest="200"

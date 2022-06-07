@@ -69,19 +69,21 @@
                             HorizontalOptions="Center"
                             Content="Отклонить"
                             TextColor="#FFFFFF"
-                            FontFamily="Mulish_ExtraBold"/>
+                            FontFamily="Mulish_ExtraBold"
+                            IsChecked="{Binding Decline}"/>
                         <RadioButton
                             HorizontalOptions="Center"
                             Content="Принять"
                             TextColor="#FFFFFF"
-                            FontFamily="Mulish_ExtraBold"/>
+                            FontFamily="Mulish_ExtraBold"
+                            IsChecked="{Binding Accept}"/>
                     </StackLayout>
                     <Frame
                         Grid.Row="1"
                         Style="{StaticResource Base_FrameEntry}">
                         <Editor
                             Placeholder="Введите комментарий"
-                            Text="{Binding Task.Comment}"
+                            Text="{Binding Comment}"
                             HeightRequest="300"
                             Style="{StaticResource Base_Entry}"/>
                     </Frame>
