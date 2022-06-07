@@ -14,6 +14,8 @@ namespace Manager.ViewModels.Admin
             NavigateToDetailDevicePageCommand = new Command(async () => await ExecuteNavigateToDetailDevicePageCommand());
         }
         
+        public string UserName => Globals.CurrentUser.FullName;
+        
         public Command NavigateToDetailDevicePageCommand { get; }
         
         private async Task ExecuteNavigateToDetailDevicePageCommand()

@@ -12,10 +12,10 @@ namespace Manager.Views.Admin
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DetailTask : ContentPage
     {
-        public DetailTask(TaskObject task)
+        public DetailTask(TaskObject task, TasksView taskView)
         {
             InitializeComponent();
-            BindingContext = new DetailTaskView(task, this);
+            BindingContext = new DetailTaskView(task, this, taskView);
         }
     }
 }

@@ -13,7 +13,7 @@
                 HorizontalOptions="Center"
                 Style="{StaticResource Body1_MulishSemiBold}"></Label>
             <Grid
-                RowDefinitions="auto, auto, auto, auto, auto, auto">
+                RowDefinitions="auto, auto, auto, auto, auto, auto, auto">
                 <Label
                     Grid.Row="0"
                     Margin="20, 30, 20, 0"
@@ -50,6 +50,40 @@
                     Text="{Binding DeviceInfo.UserName, StringFormat='Пользователь: {0}'}"
                     FontSize="15"
                     Style="{StaticResource Body1_MulishSemiBold}"></Label>
+                <Grid
+                    Grid.Row="6"
+                    Margin="20, 15, 20, 0"
+                    RowDefinitions="auto, auto, auto">
+                    <StackLayout Orientation="Horizontal" 
+                                 Margin="-10, 0, 10, 0" 
+                                 HorizontalOptions="Center"
+                                 Grid.Row="0">
+                        <RadioButton
+                            HorizontalOptions="Center"
+                            Content="В работе"
+                            TextColor="#FFFFFF"
+                            FontFamily="Mulish_ExtraBold"
+                            IsChecked="{Binding InWork}"/>
+                        <RadioButton
+                            HorizontalOptions="Center"
+                            Content="Списан"
+                            TextColor="#FFFFFF"
+                            FontFamily="Mulish_ExtraBold"
+                            IsChecked="{Binding Decommissioned}"/>
+                        <RadioButton
+                            HorizontalOptions="Center"
+                            Content="На ремонте"
+                            TextColor="#FFFFFF"
+                            FontFamily="Mulish_ExtraBold"
+                            IsChecked="{Binding OnRepair}"/>
+                    </StackLayout>
+                </Grid>
+                <Button
+                    Grid.Row="7"
+                    Margin="20, 0, 20, 0"
+                    Command="{Binding AcceptChangesCommand}"
+                    Text="Применить"
+                    Style="{StaticResource Base_Button}"/>
             </Grid>
         </StackLayout>
     </ContentPage.Content>

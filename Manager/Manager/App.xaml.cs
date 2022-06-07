@@ -12,7 +12,6 @@ namespace Manager
     public partial class App : Application
     {
         public static NavigationPage NavigationPage;
-        
         public App()
         {
             InitializeComponent();

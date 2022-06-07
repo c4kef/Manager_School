@@ -11,12 +11,14 @@ namespace Manager.ViewModels.Admin
     public class DetailTaskView : ViewModelBase
     {
         private DetailTask _view;
+        private TasksView _tasksView;
         
-        public DetailTaskView(TaskObject task, DetailTask link)
+        public DetailTaskView(TaskObject task, DetailTask link, TasksView tasksView)
         {
             Task = task;
             _view = link;
-
+            _tasksView = tasksView;
+            
             switch (task.Status)
             {
                 case "Отклонён":
@@ -106,6 +108,8 @@ namespace Manager.ViewModels.Admin
 
             await _view.DisplayAlert("Отправлено", "Ваша заявка отправлена", "OK");
 
+            await _tasksView.UpdateTasks(_tasksView.SelectedStatusIndex);
+            
             string GetStatusText()
             {
                 if (Accept)

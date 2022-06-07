@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Manager.ViewModels.Admin;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -14,13 +15,9 @@ namespace Manager.Views.Admin
     {
         public DetailDevice(Device device)
         {
-            DeviceInfo = device;
-            
             InitializeComponent();
 
-            BindingContext = this;
+            BindingContext = new DetailDeviceView(device, this);
         }
-        
-        public Device DeviceInfo { get; set; }
     }
 }

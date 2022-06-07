@@ -27,7 +27,7 @@
                     Grid.Row="1"
                     Margin="0, -2, 0, 0"
                     Style="{StaticResource Subtitle1_MulishBlack}"
-                    Text="Артемий Макаринов"
+                    Text="{Binding UserName}"
                     TextColor="{StaticResource DarkPrimaryTextColor}" />
             </Grid>
             <StackLayout

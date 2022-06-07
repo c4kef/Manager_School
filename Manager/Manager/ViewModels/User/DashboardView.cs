@@ -29,11 +29,13 @@ namespace Manager.ViewModels.User
             NavigateToDetailTaskPageCommand = new Command<TaskObject>(async (model) => await ExecuteNavigateToDetailTaskPageCommand(model));
         }
 
+        public string UserName => Globals.CurrentUser.FullName;
+
         private async Task UpdateDevices()
         {
             var getDevices =
                 await (new SqlCommand(
-                    $"SELECT Equipmentwork.id, typename, country, name, suppliername, fio, requisites, address, statusname, arrival, started, cancellation, Equipment.id FROM Equipmentwork JOIN Equipmentstatus status ON Equipmentwork.id_status = status.id JOIN Equipment on Equipmentwork.id_equipment = Equipment.id JOIN Equipmenttype etype on id_type = etype.id JOIN Suppliers supp on id_supplier = supp.id WHERE id_users = '{Globals.CurrentUser.Id}'",
+                    $"SELECT Equipmentwork.id, typename, country, name, suppliername, fio, requisites, address, statusname, arrival, started, cancellation, Equipment.id FROM Equipmentwork JOIN Equipmentstatus status ON Equipmentwork.id_status = status.id JOIN Equipment on Equipmentwork.id_equipment = Equipment.id JOIN Equipmenttype etype on id_type = etype.id JOIN Suppliers supp on id_supplier = supp.id WHERE id_users = '{Globals.CurrentUser.Id}' AND statusname != N'Списан'",
                     Globals.connection)).ExecuteReaderAsync();
 
             if (!getDevices.HasRows)
