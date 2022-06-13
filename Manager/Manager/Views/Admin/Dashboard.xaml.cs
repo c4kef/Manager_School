@@ -33,7 +33,7 @@ namespace Manager.Views.Admin
             
             var getDevices =
                 await (new SqlCommand(
-                    $"SELECT Equipmentwork.id, typename, country, name, suppliername, supp.fio, requisites, address, statusname, arrival, started, users.FIO, cancellation, Equipment.id, O.number FROM Equipmentwork JOIN Users users ON Equipmentwork.id_users = users.Id JOIN Equipmentstatus status ON Equipmentwork.id_status = status.id JOIN Equipment on Equipmentwork.id_equipment = Equipment.id JOIN Equipmenttype etype on id_type = etype.id JOIN Suppliers supp on id_supplier = supp.id JOIN Office O on users.id_office = O.id WHERE qr = '{result.Text}'",
+                    $"SELECT Equipmentwork.id, typename, country, name, suppliername, supp.fio, requisites, address, statusname, arrival, started, users.FIO, cancellation, Equipment.id, O.number, etype.id FROM Equipmentwork JOIN Users users ON Equipmentwork.id_users = users.Id JOIN Equipmentstatus status ON Equipmentwork.id_status = status.id JOIN Equipment on Equipmentwork.id_equipment = Equipment.id JOIN Equipmenttype etype on id_type = etype.id JOIN Suppliers supp on id_supplier = supp.id JOIN Office O on users.id_office = O.id WHERE qr = '{result.Text}'",
                     Globals.connection)).ExecuteReaderAsync();
 
             if (!getDevices.HasRows)
@@ -52,6 +52,7 @@ namespace Manager.Views.Admin
                     Cabinet = getDevices.GetInt32(14),
                     WId = getDevices.GetSqlInt32(0).Value,
                     EId = getDevices.GetInt32(13),
+                    SId = getDevices.GetInt32(15),
                     Manufacturer = getDevices.GetString(4),
                     Model = getDevices.GetString(3),
                     Status = getDevices.GetString(8),

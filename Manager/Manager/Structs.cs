@@ -18,6 +18,11 @@ namespace Manager
     {
         public int WId { get; set; }
         public int EId { get; set; }
+        public int SId { get; set; }
+        public string FullModelInfo
+        {
+            get => $"{SId} {Type}";
+        }
         public string UserName { get; set; }
         public string Type { get; set; }
         public string Manufacturer { get; set; }

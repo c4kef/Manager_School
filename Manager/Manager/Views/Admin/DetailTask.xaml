@@ -14,7 +14,7 @@
                 HorizontalOptions="Center"
                 Style="{StaticResource Body1_MulishSemiBold}"></Label>
             <Grid
-                RowDefinitions="auto, auto, auto, auto, auto, auto, auto, 20">
+                RowDefinitions="auto, auto, auto, auto, auto, auto, auto, auto, 20">
                 <Label
                     Grid.Row="0"
                     Margin="20, 30, 20, 0"
@@ -42,23 +42,29 @@
                 <Label
                     Grid.Row="4"
                     Margin="20, 0, 20, 0"
-                    Text="{Binding Task.Device.Id, StringFormat='Номер оборудования: {0}'}"
+                    Text="{Binding Task.Device.EId, StringFormat='Номер оборудования: {0}'}"
                     FontSize="15"
                     Style="{StaticResource Body1_MulishSemiBold}"/>
                 <Label
                     Grid.Row="5"
                     Margin="20, 0, 20, 0"
-                    Text="{Binding Task.TimeFrom, StringFormat='Открыто: {0}'}"
+                    Text="{Binding Task.Device.UserName, StringFormat='От: {0}'}"
                     FontSize="15"
                     Style="{StaticResource Body1_MulishSemiBold}"/>
                 <Label
                     Grid.Row="6"
                     Margin="20, 0, 20, 0"
+                    Text="{Binding Task.TimeFrom, StringFormat='Открыто: {0}'}"
+                    FontSize="15"
+                    Style="{StaticResource Body1_MulishSemiBold}"/>
+                <Label
+                    Grid.Row="7"
+                    Margin="20, 0, 20, 0"
                     Text="{Binding Task.TimeEnd, StringFormat='Завершено: {0}'}"
                     FontSize="15"
                     Style="{StaticResource Body1_MulishSemiBold}"/>
                 <Grid
-                    Grid.Row="6"
+                    Grid.Row="7"
                     Margin="20, 65, 20, 0"
                     RowDefinitions="auto, auto, auto">
                     <StackLayout Orientation="Horizontal" 

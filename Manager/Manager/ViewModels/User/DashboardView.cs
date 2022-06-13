@@ -35,13 +35,12 @@ namespace Manager.ViewModels.User
         {
             var getDevices =
                 await (new SqlCommand(
-                    $"SELECT Equipmentwork.id, typename, country, name, suppliername, fio, requisites, address, statusname, arrival, started, cancellation, Equipment.id FROM Equipmentwork JOIN Equipmentstatus status ON Equipmentwork.id_status = status.id JOIN Equipment on Equipmentwork.id_equipment = Equipment.id JOIN Equipmenttype etype on id_type = etype.id JOIN Suppliers supp on id_supplier = supp.id WHERE id_users = '{Globals.CurrentUser.Id}' AND statusname != N'Списан'",
+                    $"SELECT Equipmentwork.id, typename, country, name, suppliername, fio, requisites, address, statusname, arrival, started, cancellation, Equipment.id, etype.id FROM Equipmentwork JOIN Equipmentstatus status ON Equipmentwork.id_status = status.id JOIN Equipment on Equipmentwork.id_equipment = Equipment.id JOIN Equipmenttype etype on id_type = etype.id JOIN Suppliers supp on id_supplier = supp.id WHERE id_users = '{Globals.CurrentUser.Id}' AND statusname != N'Списан'",
                     Globals.connection)).ExecuteReaderAsync();
 
+            var tmpDevices = new List<Device>();
             if (!getDevices.HasRows)
                 goto end;
-
-            var tmpDevices = new List<Device>();
             
             while (await getDevices.ReadAsync())
                 tmpDevices.Add(
@@ -51,17 +50,18 @@ namespace Manager.ViewModels.User
                         Cabinet = Globals.CurrentUser.Number,
                         WId = getDevices.GetInt32(0),
                         EId = getDevices.GetInt32(12),
+                        SId = getDevices.GetInt32(13),
                         Manufacturer = getDevices.GetString(4),
                         Model = getDevices.GetString(3),
                         Status = getDevices.GetString(8),
                         Type = getDevices.GetString(1)
                     });
             
+            end:
             Devices.Clear();
             foreach (var device in tmpDevices)
                 Devices.Add(device);
             
-            end:
             getDevices.Close();
         }
         
@@ -69,14 +69,14 @@ namespace Manager.ViewModels.User
         {
             var getTasks =
                 await (new SqlCommand(
-                    $"SELECT Requests.id, equipmentwork.started, o.number, equipmentwork.id, equipment.id, suppliername, equipment.name, e_status.statusname, etype.typename, u.FIO, comments, datecreation, commentsadmin, request_status.name, dateclose FROM Requests JOIN Users u on Requests.id_users = u.Id JOIN Office O on u.id_office = O.id JOIN Equipmentwork equipmentwork on Requests.id_equipmentwork = equipmentwork.id JOIN Equipmentstatus e_status on equipmentwork.id_status = e_status.id JOIN Requestsstatus request_status on Requests.id_requestsstatus = request_status.id JOIN Equipment equipment on equipmentwork.id_equipment = equipment.id JOIN Equipmenttype etype on equipment.id_type = etype.id JOIN Suppliers supplier on equipment.id_supplier = supplier.id WHERE Requests.id_users = {Globals.CurrentUser.Id}",
+                    $"SELECT Requests.id, equipmentwork.started, o.number, equipmentwork.id, equipment.id, suppliername, equipment.name, e_status.statusname, etype.typename, u.FIO, comments, datecreation, commentsadmin, request_status.name, dateclose, equipment.id_type FROM Requests JOIN Users u on Requests.id_users = u.Id JOIN Office O on u.id_office = O.id JOIN Equipmentwork equipmentwork on Requests.id_equipmentwork = equipmentwork.id JOIN Equipmentstatus e_status on equipmentwork.id_status = e_status.id JOIN Requestsstatus request_status on Requests.id_requestsstatus = request_status.id JOIN Equipment equipment on equipmentwork.id_equipment = equipment.id JOIN Equipmenttype etype on equipment.id_type = etype.id JOIN Suppliers supplier on equipment.id_supplier = supplier.id WHERE Requests.id_users = {Globals.CurrentUser.Id}",
                     Globals.connection)).ExecuteReaderAsync();
-
-            if (!getTasks.HasRows)
-                goto end;
 
             var tmpTasks = new List<TaskObject>();
 
+            if (!getTasks.HasRows)
+                goto end;
+            
             while (await getTasks.ReadAsync())
             {
                 var device = new Device()
@@ -85,6 +85,7 @@ namespace Manager.ViewModels.User
                     Cabinet = getTasks.GetInt32(2),
                     WId = getTasks.GetInt32(3),
                     EId = getTasks.GetInt32(4),
+                    SId = getTasks.GetInt32(15),
                     Manufacturer = getTasks.GetString(5),
                     Model = getTasks.GetString(6),
                     Status = getTasks.GetString(7),
@@ -106,11 +107,11 @@ namespace Manager.ViewModels.User
                     });
             }
             
+            end:
             Tasks.Clear();
             foreach (var task in tmpTasks)
                 Tasks.Add(task);
             
-            end:
             getTasks.Close();
         }
 

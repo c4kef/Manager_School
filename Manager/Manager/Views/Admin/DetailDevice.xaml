@@ -8,7 +8,7 @@
         <StackLayout>
             <Label
                 Margin="20, 30, 20, 0"
-                Text="{Binding DeviceInfo.Type}"
+                Text="{Binding DeviceInfo.FullModelInfo}"
                 FontSize="20"
                 HorizontalOptions="Center"
                 Style="{StaticResource Body1_MulishSemiBold}"></Label>

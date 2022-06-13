@@ -142,7 +142,7 @@
                                     FontFamily="FontPoppinsMedium"
                                     FontSize="22"
                                     LineBreakMode="TailTruncation"
-                                    Text="{Binding Type}"
+                                    Text="{Binding FullModelInfo}"
                                     VerticalOptions="Center" />
                                 <Label
                                     Grid.Row="2"
