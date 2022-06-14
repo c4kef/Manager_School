@@ -21,7 +21,7 @@ namespace Manager
         public int SId { get; set; }
         public string FullModelInfo
         {
-            get => $"{SId} {Type}";
+            get => $"{WId} {Type}";
         }
         public string UserName { get; set; }
         public string Type { get; set; }
